@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://ybgquv4p6ssf"]
+
+[ext_resource type="Texture2D" uid="uid://bh3wmtybe7v6r" path="res://addons/kenney_prototype_textures/orange/texture_09.png" id="1_rhmvp"]
+[ext_resource type="PackedScene" uid="uid://bpfimiwafc8rb" path="res://CrouchCharacter_1.tscn" id="2_lof6y"]
+[ext_resource type="Texture2D" uid="uid://bbqpixwmygl5f" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="3_766dj"]
+[ext_resource type="PackedScene" uid="uid://bl0xny3yemung" path="res://CrouchCharacter_2.tscn" id="4_5vk67"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22yxi"]
+albedo_texture = ExtResource("1_rhmvp")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vggg"]
+albedo_texture = ExtResource("3_766dj")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_m57v2"]
+material = SubResource("StandardMaterial3D_7vggg")
+size = Vector3(3, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_34ysc"]
+size = Vector3(3, 1, 3)
+
+[node name="testworld" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -577.0
+offset_right = 577.0
+offset_bottom = 51.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -447.0
+offset_top = -20.0
+offset_right = 447.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "move forward - up arrow"
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "move backward - down arrow"
+
+[node name="VSeparator2" type="VSeparator" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "move right - right arrow"
+
+[node name="VSeparator3" type="VSeparator" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "move left - left arrow"
+
+[node name="VSeparator4" type="VSeparator" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="CanvasLayer/Panel/HBoxContainer"]
+layout_mode = 2
+text = "crouch - c"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.04317, 7.15571, -3.29318)
+light_color = Color(0.712568, 0.590536, 1, 1)
+light_energy = 10.0
+spot_range = 16.4454
+spot_angle = 62.9839
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.370361)
+material_override = SubResource("StandardMaterial3D_22yxi")
+use_collision = true
+size = Vector3(16, 1, 17.7407)
+
+[node name="CrouchCharacter_1" parent="." instance=ExtResource("2_lof6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289906, 0.782668, 2.01469)
+
+[node name="CrouchCharacter_2" parent="." instance=ExtResource("4_5vk67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10385, 0.541447, 1.9104)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.941635, 0.336635, 0, -0.336635, 0.941635, -0.996087, 2.58335, 6.31285)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_m57v2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_34ysc")

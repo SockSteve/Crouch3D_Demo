@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpfimiwafc8rb"]
+
+[ext_resource type="Script" path="res://CrouchBody_1.gd" id="1_uurwb"]
+[ext_resource type="Script" path="res://CrouchComponent.gd" id="2_tiu15"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f8piw"]
+custom_solver_bias = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8m3do"]
+
+[node name="CrouchCharacter_1" type="CharacterBody3D" node_paths=PackedStringArray("crouch_component")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_uurwb")
+crouch_component = NodePath("CrouchComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f8piw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_8m3do")
+
+[node name="CrouchComponent" type="Node3D" parent="." node_paths=PackedStringArray("capsule_or_cylinder_collision_shape", "mesh_instance")]
+transform = Transform3D(1, 0, 0, 0, 0.745, 0, 0, 0, 1, 0, -0.275, 0)
+script = ExtResource("2_tiu15")
+capsule_or_cylinder_collision_shape = NodePath("../CollisionShape3D")
+mesh_instance = NodePath("../MeshInstance3D")
