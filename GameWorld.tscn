@@ -10,6 +10,8 @@ albedo_texture = ExtResource("1_rhmvp")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vggg"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.858824)
 albedo_texture = ExtResource("3_766dj")
 uv1_triplanar = true
 
@@ -99,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289906, 0.782668, 2.01469)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10385, 0.541447, 1.9104)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.941635, 0.336635, 0, -0.336635, 0.941635, -0.996087, 2.58335, 6.31285)
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0.972912, 5.96597, 6.28817)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, -1)

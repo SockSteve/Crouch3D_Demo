@@ -17,7 +17,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle crouch.
-	crouch_component.can_uncrouch = not move_and_collide(crouch_component.grow_dir + Vector3(0,.2,0),true)
+	crouch_component.can_uncrouch = not move_and_collide(crouch_component.grow_dir + Vector3(0,.1,0),true)
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():

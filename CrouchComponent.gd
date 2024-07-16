@@ -58,7 +58,7 @@ func increase_height() -> void:
 	set_capsule_height(new_collision_height, new_mesh_height)
 	# The CROUCH_SPEED is multiplicated with 2 because we cant to test the future grow direction
 	# for collision. otherwise the objects collision would bump into the ceiling an is unable to move
-	grow_dir = Vector3(0,CROUCH_SPEED * 2, 0)
+	grow_dir = Vector3(0,CROUCH_SPEED, 0)
 
 # Example function to decrease the height
 func decrease_height() -> void:
